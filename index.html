@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shaffra website concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Roboto',system-ui,sans-serif;color:#1C143C;background:linear-gradient(165deg,#FFFFFF 0%,#EBE6F6 55%,#C9BEE3 100%);min-height:100vh;-webkit-font-smoothing:antialiased}
+main{max-width:1100px;margin:0 auto;padding:72px 24px 96px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#5A4A8A}
+h1{margin:16px 0 0;font-size:clamp(36px,5.4vw,64px);line-height:1.05;letter-spacing:-0.035em;font-weight:700}
+p.lead{margin:18px 0 0;max-width:620px;font-size:18px;line-height:1.6;color:#4A4166}
+.grid{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+a.c{display:flex;flex-direction:column;justify-content:space-between;min-height:320px;padding:28px;border-radius:24px;text-decoration:none;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;animation:in .8s cubic-bezier(.2,.7,.2,1) both}
+a.c:nth-child(2){animation-delay:.1s}a.c:nth-child(3){animation-delay:.2s}
+a.c:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(80,0,184,.5)}
+a.c:focus-visible{outline:3px solid #794CEC;outline-offset:4px}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.c h2{margin:0;font-size:30px;letter-spacing:-0.03em;font-weight:700}
+.c p{margin:10px 0 0;font-size:15px;line-height:1.55}
+.c .go{margin-top:24px;font-weight:500;font-size:15px}
+.a{background:#FFFFFF;color:#1C143C;border:1px solid #E6DEF6}.a p{color:#4A4166}.a .mono{color:#5A4A8A}.a .go{color:#5000B8}
+.b{background:#000000;color:#FFFFFF}.b p{color:#C4BAD9}.b .mono{color:#D6ABFE}.b .go{color:#D6ABFE}
+.d{background:linear-gradient(165deg,#794CEC 0%,#5000B8 55%,#2C1454 100%);color:#FFFFFF}.d p{color:#E6DEF6}.d .mono{color:#E6DEF6}.d .go{color:#FFFFFF}
+footer{margin-top:48px;font-size:13px;color:#4A4166}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<span class="mono">Internal design review</span>
+<h1>Three homepage concepts for shaffra.com</h1>
+<p class="lead">Each concept is a working page with animations and interactions. Open one, scroll through it, and use the switcher in the bottom left corner to move between them.</p>
+<div class="grid">
+<a class="c a" href="./v3.html"><div><span class="mono">Concept V3</span></div><div><h2>Minimal</h2><p>White, quiet and precise. Thin lines, light type and one violet accent.</p><div class="go">Open concept</div></div></a>
+<a class="c b" href="./v4.html"><div><span class="mono">Concept V4</span></div><div><h2>Dark editorial</h2><p>Black with violet glow and poster-size capital headlines. Visitors describe the work and see their AI team.</p><div class="go">Open concept</div></div></a>
+<a class="c d" href="./v5.html"><div><span class="mono">Concept V5</span></div><div><h2>Conversation</h2><p>The page answers a buyer's questions one by one, in large rounded cards.</p><div class="go">Open concept</div></div></a>
+</div>
+<footer>Design concepts for review. Not the live Shaffra website. The demo forms do not send data.</footer>
+</main>
+</body>
+</html>
