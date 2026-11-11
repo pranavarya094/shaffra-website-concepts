@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shaffra website concept V5: Conversation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Roboto',system-ui,sans-serif;color:#1C143C;background:#EBE6F6;-webkit-font-smoothing:antialiased}
+a{color:#5000B8;text-decoration:none}a:hover{color:#794CEC}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5A4A8A}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.s6{grid-column:span 6}.s4{grid-column:span 4}.s3{grid-column:span 3}.s2{grid-column:span 2}.s1{grid-column:span 1}.r2{grid-row:span 2}
+.card{background:#FFFFFF;border-radius:32px;padding:32px;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 30px 60px -34px rgba(80,0,184,.45)}
+.deep{background:linear-gradient(165deg,#794CEC 0%,#5000B8 55%,#2C1454 100%);color:#FFFFFF}
+.ink{background:#1C143C;color:#FFFFFF}
+.h{margin:0;font-weight:900;letter-spacing:-0.035em;line-height:1.02}
+.soft{color:#8464CC}
+.p{margin:0;font-size:16px;line-height:1.6;color:#4A4166}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;background:#1C143C;color:#FFFFFF;font:700 16px 'Roboto',sans-serif;border:0;cursor:pointer;transition:background .3s ease,transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{background:#5000B8;color:#FFFFFF;transform:scale(1.03)}
+.btn-v{background:#794CEC}
+.btn-v:hover{background:#FFFFFF;color:#1C143C}
+.btn-o{background:transparent;color:#1C143C;border:2px solid #1C143C}
+.btn-o:hover{background:#1C143C;color:#FFFFFF}
+.in{animation:in .9s cubic-bezier(.2,.7,.2,1) both}
+.i1{animation-delay:.1s}.i2{animation-delay:.22s}.i3{animation-delay:.34s}
+@keyframes in{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes ask{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}}
+@keyframes answer{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+.q{animation:ask linear both;animation-timeline:view();animation-range:entry 0% cover 18%}
+.a{animation:answer linear both;animation-timeline:view();animation-range:entry 0% cover 20%}
+}
+.q{display:flex;justify-content:flex-end;margin:0 0 28px}
+.q>span{display:inline-block;max-width:720px;padding:22px 30px;border-radius:32px 32px 8px 32px;background:#1C143C;color:#FFFFFF;font-size:clamp(22px,2.8vw,34px);font-weight:700;letter-spacing:-0.025em;line-height:1.2}
+.from{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+.dot{width:8px;height:8px;border-radius:50%;background:#9747FF;animation:ping 1.8s ease-in-out infinite}
+@keyframes ping{0%,100%{box-shadow:0 0 0 0 rgba(151,71,255,.55)}50%{box-shadow:0 0 0 7px rgba(151,71,255,0)}}
+.bar{width:4px;border-radius:4px;background:#D6ABFE;animation:wave 1.1s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.off{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.on{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
+.agent .av{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s ease}
+.agent:hover .av{transform:rotate(-8deg) scale(1.1);background:#794CEC;color:#FFFFFF}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:999px;background:#F4F2FA;font-size:14px;font-weight:500;color:#3D3459}
+.chip-d{background:rgba(255,255,255,.14);color:#FFFFFF}
+.orb{animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.field{width:100%;min-height:52px;padding:0 18px;border-radius:16px;border:2px solid #E6DEF6;background:#FFFFFF;font:400 16px 'Roboto',sans-serif;color:#1C143C;outline:none;transition:border-color .2s ease}
+.field:focus{border-color:#794CEC}
+.lbl{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;color:#3D3459}
+.dock{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(28,20,60,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px -20px rgba(28,20,60,.7);animation:dock .9s cubic-bezier(.2,.7,.2,1) .8s both}
+@keyframes dock{from{opacity:0;transform:translate(-50%,40px)}to{opacity:1;transform:translate(-50%,0)}}
+.dock a.dl{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;color:#E6DEF6;font-size:14px;font-weight:500;white-space:nowrap;transition:background .25s ease}
+.dock a.dl:hover{background:rgba(255,255,255,.12);color:#FFFFFF}
+@media (max-width:900px){.bento{grid-template-columns:1fr}.bento>*{grid-column:auto!important;grid-row:auto!important}.dock a.dl{display:none}.card{padding:26px;border-radius:26px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<style>
+.cx{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid #D6ABFE;box-shadow:0 12px 30px -14px rgba(28,20,60,.6);font:500 12px 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em}
+.cx span{padding:0 10px 0 12px;color:#3D3459}
+.cx a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;border-radius:999px;color:#1C143C;text-decoration:none}
+.cx a:hover{background:#EBE6F6;color:#1C143C}
+.cx a.cur{background:#1C143C;color:#FFFFFF}
+@media (max-width:600px){.cx span{display:none}}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<nav class="cx" aria-label="Design concepts" style="bottom:84px"><span>CONCEPT</span><a href="./index.html">All</a><a href="./v3.html">V3</a><a href="./v4.html">V4</a><a href="./v5.html" class="cur" aria-current="page">V5</a></nav>
+<template id="dc-tpl">
+
+
+<div style="width: 100%; overflow: hidden; background: linear-gradient(165deg, #FFFFFF 0%, #EBE6F6 30%, #C9BEE3 100%); padding-bottom: 120px">
+
+<!-- floating dock -->
+<nav class="dock" aria-label="Main">
+<a class="dl" href="#do">What we do</a>
+<a class="dl" href="#team">The team</a>
+<a class="dl" href="#arabic">Arabic</a>
+<a class="dl" href="#data">Your data</a>
+<a class="dl" href="#proof">Results</a>
+<a class="btn btn-v" href="#start" style="min-height: 44px; padding: 0 22px; font-size: 15px">Book a demo</a>
+</nav>
+
+<!-- top row -->
+<div class="wrap" style="height: 76px; display: flex; align-items: center; justify-content: space-between">
+<a href="#top" aria-label="Shaffra home" style="font-size: 28px; font-weight: 700; letter-spacing: -0.04em; color: #1C143C">shaffra</a>
+<a href="https://work.shaffra.com" style="display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; color: #1C143C">Log in</a>
+</div>
+
+<!-- HERO BENTO -->
+<section id="top" class="wrap">
+<div class="bento">
+<div class="card s4 r2 in" style="padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 520px">
+<div class="from" style="margin: 0"><span class="dot"></span><span class="label">35+ AI employees live across the GCC</span></div>
+<div>
+<h1 class="h" style="font-size: clamp(46px, 7vw, 100px)">Meet your AI employees. <span class="soft">They start today.</span></h1>
+<p class="p" style="margin-top: 24px; font-size: 19px; max-width: 560px">Shaffra builds, deploys and governs autonomous AI teams for enterprise and government. They answer calls, hire people and run projects, in Arabic and English.</p>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn" href="#start">Book a demo
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="btn btn-o" href="#do">Ask us anything</a>
+</div>
+</div>
+</div>
+
+<div class="card deep s2 in i1" style="min-height: 340px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 44px; height: 44px; border-radius: 14px; background: rgba(255,255,255,.18); display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 19px">O</span>
+<span><span style="display: block; font-weight: 700; font-size: 17px">Omar</span><span style="display: block; font-size: 13px; color: #E6DEF6">On a call now</span></span>
+</div>
+<span aria-hidden="true" style="height: 28px; display: inline-flex; align-items: center; gap: 3px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><span class="bar" style="height: {{b.h}}; animation-delay: {{b.d}}"></span></sc-for>
+</span>
+</div>
+<div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="4">
+<div class="{{l.cls}}" style="display: flex; justify-content: {{l.side}}">
+<span dir="{{l.dir}}" style="max-width: 92%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.45; background: {{l.bg}}; color: {{l.fg}}">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div class="card s1 in i2" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 24px">
+<span class="label" style="font-size: 11px">Deploy</span>
+<div><div class="h" style="font-size: 44px">5 min</div><div style="margin-top: 4px; font-size: 14px; color: #4A4166">to go live</div></div>
+</div>
+<div class="card ink s1 in i3" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 24px">
+<span class="label" style="font-size: 11px; color: #D6ABFE">Working</span>
+<div><div class="h" style="font-size: 44px">24/7</div><div style="margin-top: 4px; font-size: 14px; color: #C9BEE3">no queues</div></div>
+</div>
+</div>
+</section>
+
+<!-- Q1 -->
+<section id="do" class="wrap" style="padding-top: 120px">
+<div class="q"><span>What does Shaffra actually do?</span></div>
+<div class="a">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<p class="h" style="font-size: clamp(30px, 4.4vw, 58px); max-width: 980px">We give you AI employees that take whole jobs off your team, <span class="soft">then run and govern them on one platform.</span></p>
+<div class="bento" style="margin-top: 36px">
+<sc-for list="{{layers}}" as="ly" hint-placeholder-count="4">
+<div class="card s3" style="display: flex; gap: 22px; align-items: flex-start">
+<span style="flex: none; width: 56px; height: 56px; border-radius: 18px; background: #F4F2FA; display: inline-flex; align-items: center; justify-content: center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#794CEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ly.icon}}"></path></svg>
+</span>
+<span>
+<span class="h" style="display: block; font-size: 26px; font-weight: 700">{{ly.t}}</span>
+<span class="p" style="display: block; margin-top: 8px">{{ly.d}}</span>
+</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Q2 -->
+<section id="team" class="wrap" style="padding-top: 120px">
+<div class="q"><span>Who would I be hiring?</span></div>
+<div class="a">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<p class="h" style="font-size: clamp(30px, 4.4vw, 58px); max-width: 980px">People like these. <span class="soft">Already trained, each with a clear job description.</span></p>
+<div class="bento" style="margin-top: 36px">
+<sc-for list="{{agents}}" as="ag" hint-placeholder-count="6">
+<div class="card agent s2">
+<div style="display: flex; justify-content: space-between; align-items: flex-start">
+<span class="av" style="width: 72px; height: 72px; border-radius: 24px; background: #F4F2FA; color: #5000B8; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">{{ag.i}}</span>
+<span class="chip" style="min-height: 30px; font-size: 12px">{{ag.team}}</span>
+</div>
+<div class="h" style="margin-top: 22px; font-size: 30px">{{ag.n}}</div>
+<div style="margin-top: 2px; font-size: 15px; font-weight: 500; color: #794CEC">{{ag.r}}</div>
+<p class="p" style="margin-top: 12px; font-size: 15px">{{ag.d}}</p>
+</div>
+</sc-for>
+<div class="card ink s6" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px">
+<div>
+<div class="h" style="font-size: 26px; font-weight: 700">And 20+ more roles on the roster.</div>
+<div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{more}}" as="mo" hint-placeholder-count="6"><span class="chip chip-d">{{mo}}</span></sc-for>
+</div>
+</div>
+<a class="btn btn-v" href="#start">Find your team</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Q3 -->
+<section id="arabic" class="wrap" style="padding-top: 120px">
+<div class="q"><span>Do they really speak our Arabic?</span></div>
+<div class="a">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<div class="bento">
+<div class="card deep s4" style="position: relative; overflow: hidden; min-height: 420px; padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+<div class="orb" aria-hidden="true" style="position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #D6ABFE 0%, #9747FF 50%, rgba(151,71,255,0) 72%)"></div>
+<div dir="rtl" lang="ar" style="position: relative; font-size: clamp(30px, 4.4vw, 56px); font-weight: 700; line-height: 1.3">أهلاً وسهلاً، كيف أقدر أخدمك اليوم؟</div>
+<div style="position: relative">
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #E6DEF6; max-width: 520px">Yes. Shaffra Talk puts an AI employee on screen, face to face, with lip sync in Arabic and English.</p>
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{dialects}}" as="dl" hint-placeholder-count="6"><span class="chip chip-d">{{dl}}</span></sc-for>
+</div>
+</div>
+</div>
+<div class="card s2" style="display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+<span class="label">Built in-house</span>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<sc-for list="{{tech}}" as="tc" hint-placeholder-count="3">
+<div>
+<div class="mono" style="font-size: 12px; letter-spacing: .08em; color: #794CEC">{{tc.k}}</div>
+<div style="margin-top: 4px; font-size: 16px; line-height: 1.5; color: #1C143C">{{tc.d}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Q4 -->
+<section id="data" class="wrap" style="padding-top: 120px">
+<div class="q"><span>Where does our data go?</span></div>
+<div class="a">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<p class="h" style="font-size: clamp(30px, 4.4vw, 58px); max-width: 980px">Nowhere you don't choose. <span class="soft">It stays inside your perimeter.</span></p>
+<div class="bento" style="margin-top: 36px">
+<sc-for list="{{deploy}}" as="dp" hint-placeholder-count="3">
+<div class="card s2">
+<div class="h" style="font-size: 30px">{{dp.t}}</div>
+<p class="p" style="margin-top: 12px">{{dp.d}}</p>
+</div>
+</sc-for>
+<div class="card s6" style="padding: 22px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span class="label" style="margin-right: 8px">Every action is</span>
+<sc-for list="{{gov}}" as="gv" hint-placeholder-count="5"><span class="chip">{{gv}}</span></sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Q5 -->
+<section id="proof" class="wrap" style="padding-top: 120px">
+<div class="q"><span>Does it actually work?</span></div>
+<div class="a" id="v5-proof">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<p class="h" style="font-size: clamp(30px, 4.4vw, 58px); max-width: 980px">These aren't projections. <span class="soft">They're last month.</span></p>
+<div class="bento" style="margin-top: 36px">
+<sc-for list="{{stats}}" as="sx" hint-placeholder-count="4">
+<div class="card s3 {{sx.cls}}" style="min-height: 240px; display: flex; flex-direction: column; justify-content: space-between">
+<div class="h" style="font-size: clamp(64px, 8vw, 112px); font-variant-numeric: tabular-nums">{{sx.v}}</div>
+<div style="font-size: 17px; font-weight: 500; color: {{sx.sub}}">{{sx.l}}</div>
+</div>
+</sc-for>
+</div>
+<div class="mono" style="margin-top: 18px; font-size: 12px; color: #5A4A8A">Company-reported figures, 2025 to 2026. Uptime SLA is contractually backed.</div>
+</div>
+</section>
+
+<!-- Q6 -->
+<section id="start" class="wrap" style="padding-top: 120px">
+<div class="q"><span>OK. How do we start?</span></div>
+<div class="a">
+<div class="from"><span class="dot"></span><span class="label">Shaffra</span></div>
+<div class="bento">
+<div class="card ink s3" style="padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: space-between; gap: 36px">
+<p class="h" style="font-size: clamp(36px, 4.6vw, 64px)">Tell us the work. <span style="color: #B67CFF">Meet your team in 30 minutes.</span></p>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<span class="mono" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.12); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; color: #D6ABFE">{{st.n}}</span>
+<span style="font-size: 16px; line-height: 1.5; color: #E6DEF6; padding-top: 6px">{{st.t}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div class="card s3" style="padding: clamp(28px, 4vw, 44px)">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 16px">
+<div class="h" style="font-size: 28px">Book your demo</div>
+<label class="lbl">Full name<input class="field" type="text" name="name" autocomplete="name" required="required"></label>
+<label class="lbl">Work email<input class="field" type="email" name="email" autocomplete="email" required="required"></label>
+<label class="lbl">Organisation<input class="field" type="text" name="company" autocomplete="organization" required="required"></label>
+<label class="lbl">Team you need first
+<select class="field" name="team">
+<option>Call center</option>
+<option>Human resources</option>
+<option>Project management</option>
+<option>Sales</option>
+<option>Something else</option>
+</select>
+</label>
+<button class="btn" type="submit" style="width: 100%; margin-top: 4px">Book my demo</button>
+<p style="margin: 0; font-size: 13px; color: #5A4A8A; text-align: center">This is a design preview; no information is sent. See our <a href="https://www.shaffra.com/privacy-policy">privacy notice</a>.</p>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div class="in" style="padding: 80px 8px; text-align: center">
+<div class="h" style="font-size: 44px">Demo complete.</div>
+<p class="p" style="margin-top: 14px">Preview complete. No request was sent; this is a demo form.</p>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="wrap" style="padding-top: 96px">
+<div class="card" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 32px">
+<div>
+<div style="font-size: 24px; font-weight: 700; letter-spacing: -0.04em">shaffra</div>
+<div style="margin-top: 4px; font-size: 14px; color: #4A4166">The AI operating layer for enterprise and government.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px">
+<sc-for list="{{foot}}" as="fl" hint-placeholder-count="5">
+<a href="{{fl.href}}" style="display: inline-flex; align-items: center; min-height: 44px; color: #1C143C; font-size: 14px; font-weight: 500">{{fl.t}}</a>
+</sc-for>
+</div>
+<div style="flex-basis: 100%; padding-top: 18px; border-top: 1px solid #EBE6F6; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; color: #4A4166">
+<span>© 2026 Shaffra Technology Labs Ltd.</span>
+<span class="mono">shaffra.com</span>
+</div>
+</div>
+</footer>
+
+</div>
+</template>
+<script>
+class DCLogic{constructor(p){this.props=p||{};this.state={};}
+setState(u){Object.assign(this.state,typeof u==='function'?u(this.state):u);DC.schedule();}
+forceUpdate(){DC.schedule();}}
+const DC={q:false,
+mount(C){this.c=new C({});this.tpl=document.getElementById('dc-tpl').content;this.root=document.getElementById('dc-root');this.render();if(this.c.componentDidMount)this.c.componentDidMount();},
+schedule(){if(this.q)return;this.q=true;requestAnimationFrame(()=>{this.q=false;this.render();});},
+render(){const box=document.createElement('div');this.build(this.tpl,box,[this.c.renderVals()]);this.morph(this.root,box);},
+get(path,sc){path=path.trim();if(path==='true')return true;if(path==='false')return false;const ps=path.split('.');let v;for(const s of sc){if(s&&Object.prototype.hasOwnProperty.call(s,ps[0])){v=s[ps[0]];break;}}for(let i=1;i<ps.length&&v!=null;i++)v=v[ps[i]];return v;},
+val(str,sc){const m=/^\s*\{\{([^}]+)\}\}\s*$/.exec(str);if(m)return this.get(m[1],sc);return str.replace(/\{\{([^}]+)\}\}/g,(_, p)=>{const v=this.get(p,sc);return v==null?'':String(v);});},
+bind(el,type){el.__l=el.__l||{};if(el.__l[type])return;el.__l[type]=true;el.addEventListener(type,(e)=>{const h=el.__h&&el.__h[type];if(h)h(e);});},
+build(src,out,sc){for(const n of src.childNodes){if(n.nodeType===3){out.appendChild(document.createTextNode(this.val(n.data,sc)));continue;}if(n.nodeType!==1)continue;const tag=n.localName;
+if(tag==='sc-for'){const list=this.val(n.getAttribute('list'),sc)||[];const as=n.getAttribute('as');list.forEach((it,i)=>this.build(n,out,[{[as]:it,$index:i}].concat(sc)));continue;}
+if(tag==='sc-if'){if(this.val(n.getAttribute('value'),sc))this.build(n,out,sc);continue;}
+const el=document.createElementNS(n.namespaceURI,tag);
+for(const a of n.attributes){if(a.name.indexOf('hint-')===0)continue;const v=this.val(a.value,sc);if(/^on[a-z]/i.test(a.name)&&typeof v==='function'){const t=a.name.slice(2).toLowerCase();el.__h=el.__h||{};el.__h[t]=v;this.bind(el,t);continue;}if(v==null||typeof v==='function')continue;el.setAttribute(a.name,String(v));}
+this.build(n,el,sc);out.appendChild(el);}},
+morph(o,n){const oc=Array.from(o.childNodes),nc=Array.from(n.childNodes);const len=Math.max(oc.length,nc.length);for(let i=0;i<len;i++){const a=oc[i],b=nc[i];if(!a){o.appendChild(b);continue;}if(!b){o.removeChild(a);continue;}if(a.nodeType!==b.nodeType||a.nodeName!==b.nodeName){o.replaceChild(b,a);continue;}if(a.nodeType===3){if(a.data!==b.data)a.data=b.data;continue;}
+for(const at of Array.from(a.attributes)){if(!b.hasAttribute(at.name))a.removeAttribute(at.name);}
+for(const at of b.attributes){if(a.getAttribute(at.name)!==at.value)a.setAttribute(at.name,at.value);}
+if(b.__h){a.__h=Object.assign(a.__h||{},b.__h);for(const t in b.__h)this.bind(a,t);}
+this.morph(a,b);}}};
+
+</script>
+<script>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 0, sent: false, p: 1 };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({ step: (this.state.step + 1) % 8 }), 1300);
+    try {
+      const el = document.getElementById('v5-proof');
+      if (el && 'IntersectionObserver' in window) {
+        this.io = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !this.counted) {
+            this.counted = true;
+            this.runCount();
+          }
+        }, { threshold: 0.3 });
+        this.io.observe(el);
+      }
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+  runCount() {
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / 1700);
+      this.setState({ p: 1 - Math.pow(1 - t, 3) });
+      if (t < 1) this.raf = requestAnimationFrame(tick);
+    };
+    this.setState({ p: 0 });
+    this.raf = requestAnimationFrame(tick);
+  }
+  renderVals() {
+    const st = this.state;
+    const p = st.p;
+    const script = [
+      { text: 'أبغى أغيّر موعد التركيب لو سمحت', dir: 'rtl', side: 'flex-start', bg: 'rgba(255,255,255,.16)', fg: '#FFFFFF' },
+      { text: 'Of course. Thursday at 10 AM is free. Shall I book it?', dir: 'ltr', side: 'flex-end', bg: '#FFFFFF', fg: '#1C143C' },
+      { text: 'Yes, Thursday works.', dir: 'ltr', side: 'flex-start', bg: 'rgba(255,255,255,.16)', fg: '#FFFFFF' },
+      { text: 'Done. Installation moved, SMS sent, ticket closed.', dir: 'ltr', side: 'flex-end', bg: '#FFFFFF', fg: '#1C143C' }
+    ];
+    return {
+      bars: [0, 1, 2, 3, 4, 5, 6].map(i => ({ h: (12 + ((i * 37) % 16)) + 'px', d: (i * 0.11).toFixed(2) + 's' })),
+      lines: script.map((l, i) => ({ ...l, cls: st.step > i ? 'on' : 'off' })),
+      layers: [
+        { t: 'Shaffra Work', d: 'One workspace for people and AI employees, with quality checks on every conversation.', icon: 'M3 7h18M3 12h18M3 17h12' },
+        { t: 'Knowledge Hub', d: 'Search, knowledge graphs and organisational memory. Every answer cites its source.', icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18' },
+        { t: 'Shaffra Build', d: 'Set personality, voice, avatar, permissions and knowledge. Deploy in minutes.', icon: 'M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4' },
+        { t: 'Governance', d: 'Role-based access, policies, audit logs and versioned rollback for every AI employee.', icon: 'M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z' }
+      ],
+      agents: [
+        { n: 'Omar', i: 'O', team: 'Call center', r: 'Call Center Agent', d: 'Answers calls in Arabic or English with full customer context, then closes the ticket.' },
+        { n: 'Lina', i: 'L', team: 'HR', r: 'Recruiter', d: 'Publishes job ads, sources talent and screens every applicant.' },
+        { n: 'Faris', i: 'F', team: 'HR', r: 'Interviewer', d: 'Reviews CVs, runs structured interviews and scores every candidate.' },
+        { n: 'Mohammed', i: 'M', team: 'HR', r: 'Functional Evaluator', d: 'Assesses role readiness against competencies and simulated tasks.' },
+        { n: 'Yara', i: 'Y', team: 'Projects', r: 'PMO Lead', d: 'Oversees plans, reporting and priorities across the portfolio.' },
+        { n: 'Ahmad', i: 'A', team: 'Projects', r: 'Project Manager', d: 'Runs daily planning and follow-ups, and resolves blockers.' }
+      ],
+      more: ['Sales Agent', 'VP Sales', 'Investor Relations', 'Airport Assistant', 'Personal Enabler', 'Performance Evaluator'],
+      dialects: ['Khaleeji', 'Najdi', 'Hijazi', 'Egyptian', 'MSA', 'English'],
+      tech: [
+        { k: 'SHAFFRA-TTS-2', d: '50+ voices, trained deeply on Gulf Arabic and MSA.' },
+        { k: 'SHAFFRA-STT-2', d: 'Real-time transcription in 60+ languages.' },
+        { k: 'SUBCONSCIOUS AI', d: 'New agents inherit lessons from past deployments.' }
+      ],
+      deploy: [
+        { t: 'Sovereign', d: 'Dedicated infrastructure for data residency requirements in government and regulated sectors.' },
+        { t: 'On-premise', d: 'Runs entirely inside your own data centre. Nothing leaves your network.' },
+        { t: 'Cloud', d: 'The fastest way to start, with the same governance and audit controls.' }
+      ],
+      gov: ['Permissioned', 'Logged', 'Reversible', 'Cited', 'Policy-checked'],
+      stats: [
+        { v: (94.7 * p).toFixed(1) + '%', l: 'Task completion accuracy', cls: '', sub: '#4A4166' },
+        { v: Math.round(80 * p) + '%', l: 'Reduction in operating cost', cls: 'deep', sub: '#E6DEF6' },
+        { v: (2 * p).toFixed(p < 1 ? 1 : 0) + 'M+', l: 'Work hours saved per month in 2025', cls: 'ink', sub: '#C9BEE3' },
+        { v: (99.5 * p).toFixed(1) + '%', l: 'Uptime SLA', cls: '', sub: '#4A4166' }
+      ],
+      steps: [
+        { n: '01', t: 'Tell us the role, the volume and the systems involved.' },
+        { n: '02', t: 'Meet the AI employees who already do that work, live, in your language.' },
+        { n: '03', t: 'They start working, measured on every task.' }
+      ],
+      notSent: !st.sent,
+      sent: st.sent,
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+      foot: [
+        { t: 'AI for Government', href: 'https://www.shaffra.com/' },
+        { t: 'Enterprise AI', href: 'https://www.shaffra.com/' },
+        { t: 'Careers', href: 'https://www.shaffra.com/' },
+        { t: 'Privacy notice', href: 'https://www.shaffra.com/privacy-policy' },
+        { t: 'Log in', href: 'https://work.shaffra.com' }
+      ]
+    };
+  }
+}
+
+DC.mount(Component);
+</script>
+</body>
+</html>
