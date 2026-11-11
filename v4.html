@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Shaffra website concept V4: Dark editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;600;700&amp;family=Roboto:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Roboto',system-ui,sans-serif;color:#FFFFFF;background:#000000;-webkit-font-smoothing:antialiased}
+a{color:#D6ABFE;text-decoration:none}a:hover{color:#FFFFFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#B9A8E8}
+.disp{font-family:'Roboto Condensed','Arial Narrow','Roboto',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-0.015em;line-height:.94;margin:0}
+.violet{color:#B67CFF}
+.body{font-size:17px;line-height:1.65;color:#C4BAD9}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 28px;border-radius:4px;background:#794CEC;color:#FFFFFF;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;border:0;cursor:pointer;overflow:hidden;transition:color .35s ease}
+.btn::before{content:'';position:absolute;inset:0;background:#FFFFFF;transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{color:#000000}
+.btn:hover::before{transform:none}
+.btn>span,.btn>svg{position:relative}
+.btn-ghost{background:transparent;border:1px solid rgba(214,171,254,.4)}
+.nav-link{font:400 12px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#C4BAD9;padding:14px 2px;transition:color .2s ease}
+.nav-link:hover{color:#FFFFFF}
+.glass{background:rgba(255,255,255,.045);border:1px solid rgba(214,171,254,.2);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.glow{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;animation:drift 20s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:translate(-50px,-20px) scale(1)}100%{transform:translate(70px,40px) scale(1.25)}}
+.rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.r1{animation-delay:.1s}.r2{animation-delay:.2s}.r3{animation-delay:.4s}.r4{animation-delay:.55s}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.pop{animation:pop .5s cubic-bezier(.2,.7,.2,1) both}
+.p2{animation-delay:.12s}.p3{animation-delay:.24s}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.caret{display:inline-block;width:9px;height:1.1em;margin-left:3px;background:#B67CFF;vertical-align:text-bottom;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.live{width:7px;height:7px;border-radius:50%;background:#B67CFF;animation:ping 1.8s ease-in-out infinite}
+@keyframes ping{0%,100%{box-shadow:0 0 0 0 rgba(182,124,255,.6)}50%{box-shadow:0 0 0 7px rgba(182,124,255,0)}}
+.choice{min-height:44px;padding:0 14px;border-radius:4px;border:1px solid rgba(214,171,254,.25);background:transparent;color:#C4BAD9;font:400 12px 'IBM Plex Mono',monospace;letter-spacing:.06em;cursor:pointer;transition:all .25s ease}
+.choice:hover{border-color:#B67CFF;color:#FFFFFF}
+.choice-on{background:#FFFFFF;color:#000000;border-color:#FFFFFF}
+.choice-on:hover{color:#000000;border-color:#FFFFFF}
+.ticker{display:flex;gap:48px;width:max-content;animation:ticker 30s linear infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.lit{color:#FFFFFF}
+@supports (animation-timeline: view()){
+.lit{animation:lit linear both;animation-timeline:view();animation-range:entry 15% cover 45%}
+.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+}
+@keyframes lit{from{color:#3B2F5E}to{color:#FFFFFF}}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 28px;scrollbar-width:thin;scrollbar-color:#794CEC transparent}
+.rail:focus-visible{outline:2px solid #B67CFF;outline-offset:4px}
+.tile{flex:0 0 min(82vw,340px);scroll-snap-align:start;padding:28px;border-radius:8px;display:flex;flex-direction:column;min-height:440px;transition:border-color .35s ease,background .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.tile:hover{border-color:#B67CFF;background:rgba(151,71,255,.1);transform:translateY(-6px)}
+.tile .big{transition:color .35s ease}
+.tile:hover .big{color:#B67CFF}
+.row{width:100%;display:flex;align-items:center;gap:24px;padding:28px 0;background:none;border:0;border-top:1px solid rgba(214,171,254,.2);color:#FFFFFF;text-align:left;cursor:pointer;transition:padding .4s cubic-bezier(.2,.7,.2,1),color .3s ease}
+.row:hover{padding-left:16px;color:#B67CFF}
+.field{width:100%;min-height:52px;padding:0 16px;border-radius:4px;border:1px solid rgba(214,171,254,.3);background:rgba(255,255,255,.04);font:400 16px 'Roboto',sans-serif;color:#FFFFFF;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.field:focus{border-color:#B67CFF;box-shadow:0 0 0 4px rgba(182,124,255,.18)}
+select.field option{color:#000000}
+.lbl{display:flex;flex-direction:column;gap:8px;font:400 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#B9A8E8}
+.orb{animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@media (max-width:900px){.nav-links{display:none!important}.hide-sm{display:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<style>
+.cx{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid #D6ABFE;box-shadow:0 12px 30px -14px rgba(28,20,60,.6);font:500 12px 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em}
+.cx span{padding:0 10px 0 12px;color:#3D3459}
+.cx a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;border-radius:999px;color:#1C143C;text-decoration:none}
+.cx a:hover{background:#EBE6F6;color:#1C143C}
+.cx a.cur{background:#1C143C;color:#FFFFFF}
+@media (max-width:600px){.cx span{display:none}}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<nav class="cx" aria-label="Design concepts"><span>CONCEPT</span><a href="./index.html">All</a><a href="./v3.html">V3</a><a href="./v4.html" class="cur" aria-current="page">V4</a><a href="./v5.html">V5</a></nav>
+<template id="dc-tpl">
+
+
+<div style="width: 100%; overflow: hidden; background: #000000">
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(0,0,0,.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(214,171,254,.14)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="#top" aria-label="Shaffra home" style="font: 500 24px 'Roboto', sans-serif; letter-spacing: -0.04em; color: #FFFFFF">shaffra</a>
+<nav class="nav-links" aria-label="Main" style="display: flex; gap: 32px; align-items: center">
+<a class="nav-link" href="#team">01 Team</a>
+<a class="nav-link" href="#platform">02 Platform</a>
+<a class="nav-link" href="#proof">03 Proof</a>
+<a class="nav-link" href="#talk">04 Talk</a>
+<a class="nav-link" href="#deploy">05 Deploy</a>
+</nav>
+<div style="display: flex; gap: 20px; align-items: center">
+<a class="nav-link hide-sm" href="https://work.shaffra.com">Log in</a>
+<a class="btn" href="#demo" style="min-height: 44px; padding: 0 20px"><span>Book a demo</span></a>
+</div>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative; padding: 88px 0 96px">
+<div class="glow" aria-hidden="true" style="width: 640px; height: 520px; background: #7C2CF4; opacity: .42; top: -200px; right: -160px"></div>
+<div class="glow" aria-hidden="true" style="width: 420px; height: 380px; background: #5000B8; opacity: .35; bottom: -220px; left: -160px; animation-direction: alternate-reverse"></div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<div class="rise" style="display: inline-flex; align-items: center; gap: 10px"><span class="live"></span><span class="tag">35+ AI employees live across the GCC</span></div>
+<h1 class="disp" style="margin-top: 28px; font-size: clamp(44px, 9.6vw, 140px)">
+<span class="rise r1" style="display: block">AI employees.</span>
+<span class="rise r2" style="display: block">Hired in minutes.</span>
+<span class="rise r3 violet" style="display: block">Working 24/7.</span>
+</h1>
+<div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px; align-items: start">
+<div>
+<p class="rise r4 body" style="margin: 0; max-width: 520px; font-size: 19px">Shaffra builds, deploys and governs autonomous AI teams for enterprise and government. Arabic and English. Inside your own perimeter.</p>
+<div class="rise r4" style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px">
+<a class="btn" href="#demo"><span>Book a demo</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="btn btn-ghost" href="#team"><span>Meet the team</span></a>
+</div>
+</div>
+
+<!-- describe-the-work console -->
+<div class="rise r3 glass" style="border-radius: 8px; box-shadow: 0 60px 120px -50px rgba(124,44,244,.7)">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 22px; border-bottom: 1px solid rgba(214,171,254,.16)">
+<span class="tag" style="font-size: 11px">Describe the work</span>
+<span class="tag" style="font-size: 11px; display: inline-flex; align-items: center; gap: 8px"><span class="live"></span>Try it</span>
+</div>
+<div style="padding: 22px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{choices}}" as="ch" hint-placeholder-count="4">
+<button class="{{ch.cls}}" aria-pressed="{{ch.pressed}}" onClick="{{ch.pick}}">{{ch.label}}</button>
+</sc-for>
+</div>
+<div class="mono" style="margin-top: 22px; min-height: 84px; padding: 18px; border-radius: 4px; background: rgba(0,0,0,.45); border: 1px solid rgba(214,171,254,.14); font-size: 16px; line-height: 1.55; color: #FFFFFF">
+<span style="color: #B67CFF">&gt; </span>{{typed}}<span class="caret" aria-hidden="true"></span>
+</div>
+<div style="margin-top: 22px; min-height: 236px">
+<sc-if value="{{matching}}" hint-placeholder-val="{{false}}">
+<div class="tag" style="font-size: 11px">Matching your team...</div>
+</sc-if>
+<sc-if value="{{matched}}" hint-placeholder-val="{{true}}">
+<div>
+<div class="tag pop" style="font-size: 11px; color: #B67CFF">{{teamLabel}}</div>
+<div style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{team}}" as="tm" hint-placeholder-count="3">
+<div class="{{tm.cls}}" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 4px; background: rgba(255,255,255,.06); border: 1px solid rgba(214,171,254,.16)">
+<span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 4px; background: #794CEC; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">{{tm.i}}</span>
+<span style="flex: 1 1 auto; min-width: 0">
+<span style="display: block; font-size: 16px; font-weight: 500">{{tm.n}}</span>
+<span style="display: block; font-size: 13px; color: #C4BAD9">{{tm.d}}</span>
+</span>
+<span class="tag" style="flex: none; font-size: 10px">Ready</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+<a href="#demo" class="mono" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase">Put this team to work
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TICKER -->
+<section aria-label="What AI employees do" style="background: #794CEC; padding: 18px 0; overflow: hidden">
+<div class="ticker">
+<sc-for list="{{ticker}}" as="tk" hint-placeholder-count="16">
+<span class="disp" style="font-size: 26px; white-space: nowrap; display: inline-flex; align-items: center; gap: 48px">{{tk}}<span aria-hidden="true" style="width: 8px; height: 8px; background: #000000; transform: rotate(45deg)"></span></span>
+</sc-for>
+</div>
+</section>
+
+<!-- MANIFESTO -->
+<section style="padding: 136px 0 0">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<span class="tag">What we do</span>
+<p class="disp" style="margin-top: 28px; font-size: clamp(34px, 5.6vw, 84px); line-height: 1">
+<span class="lit" style="display: block">Not chatbots. Not copilots.</span>
+<span class="lit" style="display: block">AI employees with memory,</span>
+<span class="lit" style="display: block">judgment and a job description.</span>
+<span class="lit violet" style="display: block; animation-name: none; color: #B67CFF">They finish the work.</span>
+</p>
+<div style="margin-top: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<div class="reveal" style="padding: 28px 28px 28px 0; border-top: 1px solid rgba(214,171,254,.2)">
+<span class="tag" style="color: #B67CFF">{{st.n}}</span>
+<h3 class="disp" style="margin-top: 20px; font-size: 30px">{{st.t}}</h3>
+<p class="body" style="margin: 12px 0 0; font-size: 16px; max-width: 340px">{{st.d}}</p>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- TEAM RAIL -->
+<section id="team" style="padding: 136px 0 0">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div>
+<span class="tag">01 · The team</span>
+<h2 class="disp" style="margin-top: 20px; font-size: clamp(40px, 6vw, 88px)">Already trained.<br><span class="violet">Already working.</span></h2>
+</div>
+<span class="tag" style="display: inline-flex; align-items: center; gap: 10px">Scroll the roster
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+<div style="max-width: 1280px; margin: 48px auto 0">
+<div class="rail" tabindex="0" role="region" aria-label="AI employee roster">
+<sc-for list="{{roster}}" as="ag" hint-placeholder-count="6">
+<article class="tile glass">
+<div style="display: flex; justify-content: space-between; align-items: flex-start">
+<span class="tag" style="font-size: 11px">{{ag.team}}</span>
+<span class="live"></span>
+</div>
+<div class="disp big" aria-hidden="true" style="margin-top: 20px; font-size: 150px; line-height: .8; color: rgba(255,255,255,.14)">{{ag.i}}</div>
+<h3 class="disp" style="margin-top: 20px; font-size: 38px">{{ag.n}}</h3>
+<div class="mono" style="margin-top: 6px; font-size: 12px; letter-spacing: .08em; color: #B67CFF">{{ag.r}}</div>
+<p class="body" style="margin: 16px 0 0; font-size: 15px">{{ag.d}}</p>
+</article>
+</sc-for>
+<article class="tile" style="background: #794CEC; justify-content: space-between">
+<span class="tag" style="font-size: 11px; color: #FFFFFF">And 20+ more roles</span>
+<h3 class="disp" style="font-size: 44px">Sales. Investor relations. Airports. Your role next.</h3>
+<a class="btn" href="#demo" style="background: #000000"><span>See the full roster</span></a>
+</article>
+</div>
+</div>
+</section>
+
+<!-- PLATFORM ACCORDION -->
+<section id="platform" style="padding: 120px 0 0">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<span class="tag">02 · The platform</span>
+<h2 class="disp" style="margin-top: 20px; font-size: clamp(40px, 6vw, 88px)">One platform.<br>Four layers.</h2>
+<div style="margin-top: 56px; border-bottom: 1px solid rgba(214,171,254,.2)">
+<sc-for list="{{layers}}" as="ly" hint-placeholder-count="4">
+<div>
+<button class="row" aria-expanded="{{ly.open}}" onClick="{{ly.toggle}}">
+<span class="tag" style="flex: none; width: 44px; color: #B67CFF">{{ly.n}}</span>
+<span class="disp" style="flex: 1 1 auto; font-size: clamp(26px, 3.6vw, 52px); color: inherit">{{ly.t}}</span>
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" style="flex: none; transform: {{ly.rot}}; transition: transform .4s cubic-bezier(.2,.7,.2,1)"><path d="M12 5v14M5 12h14"></path></svg>
+</button>
+<sc-if value="{{ly.open}}" hint-placeholder-val="{{false}}">
+<div class="pop" style="padding: 0 0 36px 68px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; align-items: start">
+<p class="body" style="margin: 0; font-size: 18px; max-width: 520px">{{ly.d}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ly.tags}}" as="tg" hint-placeholder-count="3">
+<span class="mono" style="display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border-radius: 4px; border: 1px solid rgba(214,171,254,.25); font-size: 12px; letter-spacing: .06em; color: #D6ABFE">{{tg}}</span>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- PROOF -->
+<section id="proof" style="position: relative; padding: 136px 0 0">
+<div class="glow" aria-hidden="true" style="width: 600px; height: 460px; background: #5000B8; opacity: .4; top: 60px; left: 50%; margin-left: -300px"></div>
+<div id="v4-proof" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<span class="tag">03 · The proof</span>
+<h2 class="disp" style="margin-top: 20px; font-size: clamp(40px, 6vw, 88px)">Not projections.<br><span class="violet">Last month.</span></h2>
+<div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 0; border-top: 1px solid rgba(214,171,254,.2)">
+<sc-for list="{{stats}}" as="sx" hint-placeholder-count="4">
+<div style="padding: 40px 24px 40px 0; border-bottom: 1px solid rgba(214,171,254,.2); display: flex; flex-direction: column; gap: 18px">
+<div class="disp" style="font-size: clamp(72px, 10vw, 152px); line-height: .85; font-variant-numeric: tabular-nums">{{sx.v}}</div>
+<div class="mono" style="font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #C4BAD9">{{sx.l}}</div>
+</div>
+</sc-for>
+</div>
+<div class="mono" style="margin-top: 24px; font-size: 12px; letter-spacing: .06em; color: #9F93BD">Company-reported figures, 2025 to 2026. Uptime SLA is contractually backed.</div>
+</div>
+</section>
+
+<!-- TALK -->
+<section id="talk" style="padding: 136px 0 0">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<div class="reveal glass" style="position: relative; border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr))">
+<div style="padding: clamp(28px, 4vw, 64px)">
+<span class="tag">04 · Shaffra Talk</span>
+<h2 class="disp" style="margin-top: 20px; font-size: clamp(36px, 4.8vw, 68px)">Face to face.<br><span class="violet">In your dialect.</span></h2>
+<p class="body" style="margin: 24px 0 0; max-width: 480px">On-screen AI employees with lip sync, including Arabic. Parallel conversations, no queues, connected to your CRM, ERP, ticketing and calendars.</p>
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0; border-top: 1px solid rgba(214,171,254,.2)">
+<sc-for list="{{dialects}}" as="dl" hint-placeholder-count="6">
+<span class="mono" style="padding: 14px 0; border-bottom: 1px solid rgba(214,171,254,.2); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #D6ABFE">{{dl}}</span>
+</sc-for>
+</div>
+</div>
+<div style="position: relative; min-height: 420px; background: radial-gradient(circle at 50% 45%, #9747FF 0%, #2C1454 48%, #000000 100%); display: flex; align-items: center; justify-content: center">
+<div class="orb" aria-hidden="true" style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 38% 32%, #FFFFFF 0%, #D6ABFE 25%, #9747FF 60%, #5000B8 100%); box-shadow: 0 0 120px 30px rgba(151,71,255,.6)"></div>
+<div class="glass" style="position: absolute; left: 24px; right: 24px; bottom: 24px; padding: 16px 20px; border-radius: 4px">
+<div class="tag" style="font-size: 10px">Reception desk · Khaleeji</div>
+<div dir="rtl" lang="ar" style="margin-top: 6px; font-size: 18px">أهلاً وسهلاً، كيف أقدر أخدمك اليوم؟</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DEPLOY -->
+<section id="deploy" style="padding: 136px 0 0">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<span class="tag">05 · Deployment</span>
+<h2 class="disp" style="margin-top: 20px; font-size: clamp(40px, 6vw, 88px)">Your data.<br>Your perimeter.</h2>
+<div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<sc-for list="{{deploy}}" as="dp" hint-placeholder-count="3">
+<div class="reveal glass" style="padding: 32px; border-radius: 8px">
+<span class="tag" style="color: #B67CFF">{{dp.k}}</span>
+<h3 class="disp" style="margin-top: 48px; font-size: 40px">{{dp.t}}</h3>
+<p class="body" style="margin: 12px 0 0; font-size: 16px">{{dp.d}}</p>
+</div>
+</sc-for>
+</div>
+<div class="mono" style="margin-top: 24px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #C4BAD9; line-height: 2">Role-based access · Policy controls · Audit logs · Versioned rollback · Cited answers</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="demo" style="position: relative; padding: 136px 0 120px">
+<div class="glow" aria-hidden="true" style="width: 700px; height: 520px; background: #7C2CF4; opacity: .45; bottom: -260px; right: -160px"></div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px; align-items: center">
+<div class="reveal">
+<h2 class="disp" style="font-size: clamp(52px, 8.4vw, 128px)">Put a team<br><span class="violet">to work.</span></h2>
+<p class="body" style="margin: 28px 0 0; max-width: 460px; font-size: 19px">Tell us the work. In a 30-minute demo we introduce the AI employees who already do it, live, in your language.</p>
+</div>
+<div class="reveal glass" style="padding: 32px; border-radius: 8px">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 16px">
+<label class="lbl">Full name<input class="field" type="text" name="name" autocomplete="name" required="required"></label>
+<label class="lbl">Work email<input class="field" type="email" name="email" autocomplete="email" required="required"></label>
+</div>
+<label class="lbl">Organisation<input class="field" type="text" name="company" autocomplete="organization" required="required"></label>
+<label class="lbl">Team you need first
+<select class="field" name="team">
+<option>Call center</option>
+<option>Human resources</option>
+<option>Project management</option>
+<option>Sales</option>
+<option>Something else</option>
+</select>
+</label>
+<button class="btn" type="submit" style="width: 100%; margin-top: 4px"><span>Book my demo</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</button>
+<p style="margin: 0; font-size: 13px; color: #C4BAD9; text-align: center">This is a design preview; no information is sent. See our <a href="https://www.shaffra.com/privacy-policy">privacy notice</a>.</p>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div class="pop" style="padding: 64px 8px; text-align: center">
+<div class="disp violet" style="font-size: 56px">Demo complete.</div>
+<p class="body" style="margin: 14px 0 0">Preview complete. No request was sent; this is a demo form.</p>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid rgba(214,171,254,.2); padding: 56px 0 36px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 40px">
+<div>
+<div style="font: 500 24px 'Roboto', sans-serif; letter-spacing: -0.04em">shaffra</div>
+<p class="body" style="margin: 12px 0 0; font-size: 14px; max-width: 240px">The AI operating layer for enterprise and government.</p>
+</div>
+<sc-for list="{{footer}}" as="fc" hint-placeholder-count="3">
+<div>
+<div class="tag" style="font-size: 11px">{{fc.h}}</div>
+<div style="margin-top: 14px; display: flex; flex-direction: column">
+<sc-for list="{{fc.links}}" as="lk" hint-placeholder-count="5">
+<a href="{{lk.href}}" style="color: #FFFFFF; font-size: 14px; padding: 8px 0">{{lk.t}}</a>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div class="disp" aria-hidden="true" style="margin-top: 72px; font-size: clamp(40px, 9.4vw, 148px); color: rgba(255,255,255,.1); white-space: nowrap">The future starts here.</div>
+<div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(214,171,254,.2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #C4BAD9">
+<span>© 2026 Shaffra Technology Labs Ltd.</span>
+<span class="mono">shaffra.com</span>
+</div>
+</div>
+</footer>
+
+</div>
+</template>
+<script>
+class DCLogic{constructor(p){this.props=p||{};this.state={};}
+setState(u){Object.assign(this.state,typeof u==='function'?u(this.state):u);DC.schedule();}
+forceUpdate(){DC.schedule();}}
+const DC={q:false,
+mount(C){this.c=new C({});this.tpl=document.getElementById('dc-tpl').content;this.root=document.getElementById('dc-root');this.render();if(this.c.componentDidMount)this.c.componentDidMount();},
+schedule(){if(this.q)return;this.q=true;requestAnimationFrame(()=>{this.q=false;this.render();});},
+render(){const box=document.createElement('div');this.build(this.tpl,box,[this.c.renderVals()]);this.morph(this.root,box);},
+get(path,sc){path=path.trim();if(path==='true')return true;if(path==='false')return false;const ps=path.split('.');let v;for(const s of sc){if(s&&Object.prototype.hasOwnProperty.call(s,ps[0])){v=s[ps[0]];break;}}for(let i=1;i<ps.length&&v!=null;i++)v=v[ps[i]];return v;},
+val(str,sc){const m=/^\s*\{\{([^}]+)\}\}\s*$/.exec(str);if(m)return this.get(m[1],sc);return str.replace(/\{\{([^}]+)\}\}/g,(_, p)=>{const v=this.get(p,sc);return v==null?'':String(v);});},
+bind(el,type){el.__l=el.__l||{};if(el.__l[type])return;el.__l[type]=true;el.addEventListener(type,(e)=>{const h=el.__h&&el.__h[type];if(h)h(e);});},
+build(src,out,sc){for(const n of src.childNodes){if(n.nodeType===3){out.appendChild(document.createTextNode(this.val(n.data,sc)));continue;}if(n.nodeType!==1)continue;const tag=n.localName;
+if(tag==='sc-for'){const list=this.val(n.getAttribute('list'),sc)||[];const as=n.getAttribute('as');list.forEach((it,i)=>this.build(n,out,[{[as]:it,$index:i}].concat(sc)));continue;}
+if(tag==='sc-if'){if(this.val(n.getAttribute('value'),sc))this.build(n,out,sc);continue;}
+const el=document.createElementNS(n.namespaceURI,tag);
+for(const a of n.attributes){if(a.name.indexOf('hint-')===0)continue;const v=this.val(a.value,sc);if(/^on[a-z]/i.test(a.name)&&typeof v==='function'){const t=a.name.slice(2).toLowerCase();el.__h=el.__h||{};el.__h[t]=v;this.bind(el,t);continue;}if(v==null||typeof v==='function')continue;el.setAttribute(a.name,String(v));}
+this.build(n,el,sc);out.appendChild(el);}},
+morph(o,n){const oc=Array.from(o.childNodes),nc=Array.from(n.childNodes);const len=Math.max(oc.length,nc.length);for(let i=0;i<len;i++){const a=oc[i],b=nc[i];if(!a){o.appendChild(b);continue;}if(!b){o.removeChild(a);continue;}if(a.nodeType!==b.nodeType||a.nodeName!==b.nodeName){o.replaceChild(b,a);continue;}if(a.nodeType===3){if(a.data!==b.data)a.data=b.data;continue;}
+for(const at of Array.from(a.attributes)){if(!b.hasAttribute(at.name))a.removeAttribute(at.name);}
+for(const at of b.attributes){if(a.getAttribute(at.name)!==at.value)a.setAttribute(at.name,at.value);}
+if(b.__h){a.__h=Object.assign(a.__h||{},b.__h);for(const t in b.__h)this.bind(a,t);}
+this.morph(a,b);}}};
+
+</script>
+<script>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.jobs = [
+      { label: 'Customer calls', text: 'Answer every customer call in Arabic and English', teamLabel: 'Call center team · 5+ AI agents', team: [
+        { n: 'Omar', d: 'Answers, resolves and closes the ticket' },
+        { n: 'Inbound Sales', d: 'Qualifies callers and books meetings' },
+        { n: 'Airport Assistant', d: 'Guides people at desks and kiosks' } ] },
+      { label: 'Hiring', text: 'Screen and interview every applicant for our open roles', teamLabel: 'Human resources team · 10+ AI agents', team: [
+        { n: 'Lina', d: 'Publishes ads, sources and screens' },
+        { n: 'Faris', d: 'Runs structured interviews and scores' },
+        { n: 'Mohammed', d: 'Checks readiness with simulated tasks' } ] },
+      { label: 'Projects', text: 'Keep our whole project portfolio on schedule', teamLabel: 'Project management team · 8+ AI agents', team: [
+        { n: 'Yara', d: 'Owns plans, reporting and priorities' },
+        { n: 'Ahmad', d: 'Follows up daily and clears blockers' } ] },
+      { label: 'Sales', text: 'Qualify inbound leads and book meetings for our reps', teamLabel: 'Sales team', team: [
+        { n: 'Sales Agent', d: 'Works every lead to a next step' },
+        { n: 'Inbound Sales', d: 'Responds the moment a lead arrives' },
+        { n: 'VP Sales', d: 'Reports pipeline and priorities' } ] }
+    ];
+    this.state = { job: 0, n: this.jobs[0].text.length, locked: false, layer: 0, sent: false, p: 1 };
+    this.hold = 0;
+  }
+  componentDidMount() {
+    this.typer = setInterval(() => {
+      const st = this.state;
+      const full = this.jobs[st.job].text.length;
+      if (st.n < full) {
+        this.setState({ n: st.n + 1 });
+      } else if (!st.locked) {
+        this.hold += 1;
+        if (this.hold > 85) {
+          this.hold = 0;
+          this.setState({ job: (st.job + 1) % this.jobs.length, n: 0 });
+        }
+      }
+    }, 45);
+    try {
+      const el = document.getElementById('v4-proof');
+      if (el && 'IntersectionObserver' in window) {
+        this.io = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !this.counted) {
+            this.counted = true;
+            this.runCount();
+          }
+        }, { threshold: 0.25 });
+        this.io.observe(el);
+      }
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    clearInterval(this.typer);
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+  runCount() {
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / 1800);
+      this.setState({ p: 1 - Math.pow(1 - t, 3) });
+      if (t < 1) this.raf = requestAnimationFrame(tick);
+    };
+    this.setState({ p: 0 });
+    this.raf = requestAnimationFrame(tick);
+  }
+  renderVals() {
+    const st = this.state;
+    const job = this.jobs[st.job];
+    const done = st.n >= job.text.length;
+    const pops = ['pop', 'pop p2', 'pop p3'];
+    const p = st.p;
+    const tick = ['Answers calls', 'Screens candidates', 'Runs interviews', 'Manages projects', 'Qualifies leads', 'Closes tickets', 'Books appointments', 'Writes reports'];
+    const layerData = [
+      { n: '01', t: 'Shaffra Work', d: 'One workspace for people and AI employees, with quality checks on every conversation and native Arabic and English.', tags: ['Shared workspace', 'Conversation QA', 'Bilingual'] },
+      { n: '02', t: 'Knowledge Hub', d: 'Enterprise search, knowledge graphs and organisational memory with granular access control. Every answer cites its source.', tags: ['Enterprise search', 'Knowledge graph', 'Cited answers'] },
+      { n: '03', t: 'Shaffra Build', d: 'Set an AI employee’s personality, voice, avatar, permissions and knowledge, then deploy it in minutes.', tags: ['Persona', 'Voice and avatar', 'Permissions'] },
+      { n: '04', t: 'Governance and Deployment', d: 'Role-based access, policies, audit logs and versioned rollback. Run it sovereign, on-premise or in the cloud.', tags: ['Audit logs', 'Rollback', 'Sovereign'] }
+    ];
+    return {
+      choices: this.jobs.map((j, i) => ({
+        label: j.label,
+        cls: i === st.job ? 'choice choice-on' : 'choice',
+        pressed: i === st.job ? 'true' : 'false',
+        pick: () => { this.hold = 0; this.setState({ job: i, n: 0, locked: true }); }
+      })),
+      typed: job.text.slice(0, st.n),
+      matching: !done,
+      matched: done,
+      teamLabel: job.teamLabel,
+      team: job.team.map((m, i) => ({ ...m, i: m.n.charAt(0), cls: pops[i % 3] })),
+      ticker: tick.concat(tick),
+      steps: [
+        { n: '01', t: 'Tell us the work', d: 'The role, the volume and the systems involved.' },
+        { n: '02', t: 'Meet your team', d: 'Pre-trained AI employees, given your knowledge, policies, voice and permissions.' },
+        { n: '03', t: 'They start', d: 'Deployed in minutes. Measured on every task. Audited on every action.' }
+      ],
+      roster: [
+        { n: 'Omar', i: 'O', team: 'Call center', r: 'CALL CENTER AGENT', d: 'Answers calls in Arabic or English with full customer context, then completes follow-ups and tickets.' },
+        { n: 'Lina', i: 'L', team: 'Human resources', r: 'RECRUITER', d: 'Publishes job ads, sources talent and screens every applicant against the role.' },
+        { n: 'Faris', i: 'F', team: 'Human resources', r: 'INTERVIEWER', d: 'Reviews CVs, runs structured interviews and scores every candidate the same way.' },
+        { n: 'Mohammed', i: 'M', team: 'Human resources', r: 'FUNCTIONAL EVALUATOR', d: 'Assesses role readiness against competencies and simulated tasks.' },
+        { n: 'Yara', i: 'Y', team: 'Project management', r: 'PMO LEAD', d: 'Oversees plans, reporting and priorities across the whole portfolio.' },
+        { n: 'Ahmad', i: 'A', team: 'Project management', r: 'PROJECT MANAGER', d: 'Runs day-to-day planning and follow-ups, and resolves blockers.' }
+      ],
+      layers: layerData.map((l, i) => ({
+        ...l,
+        open: st.layer === i,
+        rot: st.layer === i ? 'rotate(45deg)' : 'none',
+        toggle: () => this.setState({ layer: this.state.layer === i ? -1 : i })
+      })),
+      stats: [
+        { v: (94.7 * p).toFixed(1) + '%', l: 'Task completion accuracy' },
+        { v: (99.5 * p).toFixed(1) + '%', l: 'Uptime SLA' },
+        { v: Math.round(80 * p) + '%', l: 'Reduction in operating cost' },
+        { v: (2 * p).toFixed(p < 1 ? 1 : 0) + 'M+', l: 'Work hours saved per month' }
+      ],
+      dialects: ['Khaleeji', 'Najdi', 'Hijazi', 'Egyptian', 'MSA', 'English'],
+      deploy: [
+        { k: 'Option A', t: 'Sovereign', d: 'Dedicated infrastructure for data residency requirements in government and regulated sectors.' },
+        { k: 'Option B', t: 'On-premise', d: 'Runs entirely inside your own data centre. Nothing leaves your network.' },
+        { k: 'Option C', t: 'Cloud', d: 'The fastest way to start, with the same governance and audit controls.' }
+      ],
+      notSent: !st.sent,
+      sent: st.sent,
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+      footer: [
+        { h: 'Platform', links: [ { t: 'Shaffra Work', href: '#platform' }, { t: 'Knowledge Hub', href: '#platform' }, { t: 'Shaffra Build', href: '#platform' }, { t: 'Shaffra Talk', href: '#talk' }, { t: 'Governance', href: '#deploy' } ] },
+        { h: 'Company', links: [ { t: 'AI for Government', href: 'https://www.shaffra.com/' }, { t: 'Enterprise AI', href: 'https://www.shaffra.com/' }, { t: 'Careers', href: 'https://www.shaffra.com/' }, { t: 'Privacy notice', href: 'https://www.shaffra.com/privacy-policy' } ] },
+        { h: 'Get started', links: [ { t: 'Book a demo', href: '#demo' }, { t: 'Meet the team', href: '#team' }, { t: 'Log in', href: 'https://work.shaffra.com' } ] }
+      ]
+    };
+  }
+}
+
+DC.mount(Component);
+</script>
+</body>
+</html>
